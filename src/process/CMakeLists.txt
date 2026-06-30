@@ -22,3 +22,8 @@ target_link_libraries(${PROJECT_NAME}
     pnc_map
 )
 
+#库链接：
+target_link_libraries(${PROJECT_NAME}
+    PUBLIC
+    Eigen3::Eigen
+)
