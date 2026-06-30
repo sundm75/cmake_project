@@ -6,26 +6,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)#动态库和exe都
 #CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib #这是静态库的输出目录 在linux下用
 #CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin #这是可执行文件的输出目录 在linux下用
 
-#用 file 的文件表 生成动态库 common
-file(GLOB_RECURSE SRC_LISTS ${PROJECT_SOURCE_DIR}/src/*.cpp)
-add_library(common
-SHARED
-${SRC_LISTS}
-)
-#动态库头文件
-target_include_directories(common
-    PUBLIC
-    ${PROJECT_SOURCE_DIR}/inc
-)
 
+# 路径变量设置
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+set(Process_Dir ${CMAKE_SOURCE_DIR}/src/process)
+set(Pnc_map_Dir ${CMAKE_SOURCE_DIR}/src/pnc_map)
+set(Show_result_Dir ${CMAKE_SOURCE_DIR}/src/show_result)
 
-#生成可执行文件
-add_executable( planning_main  main.cpp)
-
-#可执行 头文件
-target_include_directories(common
-    PUBLIC
-    ${PROJECT_SOURCE_DIR}/inc
-)
-#可执行调用的库 链接库
-target_link_libraries(planning_main common)
+#添加子目录
+add_subdirectory(src)
