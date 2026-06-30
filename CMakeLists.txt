@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 project(planning)
 set(CMAKE_CXX_STANDARD 17)
+enable_testing()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)#动态库和exe都指定到bin目录下
 #CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib #这是静态库的输出目录 在linux下用
@@ -25,3 +26,4 @@ endif()
 
 #添加子目录
 add_subdirectory(src)
+add_subdirectory(test/map_test)
